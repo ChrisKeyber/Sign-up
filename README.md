@@ -1,5 +1,6 @@
 # Sign-up
 Just a normal sign up example
 --------------------------------
-#Link
+Link
+-----
 https://chriskeyber.github.io/Sign-up/
