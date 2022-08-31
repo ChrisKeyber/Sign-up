@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Sign up to join!</title>
+  </head>
+  <body>
+    <!--何を探してる？どうして君はここにいる？下はあなたがわからないものだ、これから、すぐに出でください！でもあなたはプログラマーなら、問題はないよ^o^-->
+    <div class="content">
+      <form>
+        <div class="formitself">
+          <h1>Create an Account</h1>
+          <div class="Inputs">
+            <div class="Username">
+              <div class="presence_alert" id="alert">Must be filled</div>
+              <div id="alert" class="user_alert">
+                must be more than 2, less than 20 characters
+              </div>
+              <input type="text" class="Userinput" placeholder="John Smith" />
+              <label class="Usernametxt">Username</label>
+            </div>
+            <div class="Email">
+              <div class="presence_alert" id="alert">Must be filled</div>
+              <div id="alert" class="email_alert">wrong email format</div>
+              <input
+                type="text"
+                class="Emailinput"
+                placeholder="example@mail.xyz"
+              />
+              <label class="Emailtxt">Email</label>
+            </div>
+            <div class="Password">
+              <div class="presence_alert" id="alert">Must be filled</div>
+              <div id="alert" class="pass_alert">
+                require special characters, upper, lowercase and numbers
+              </div>
+              <input
+                type="password"
+                class="Passinput"
+                placeholder="8+ Strong characters"
+              />
+              <label class="Passwordtxt">Password</label>
+            </div>
+          </div>
+          <input type="submit" value="Create an account" />
+        </div>
+        <hr
+          style="
+            border: 1px solid rgba(147, 147, 147, 0.241);
+            margin-top: -30px;
+            margin-left: 35px;
+            margin-right: 35px;
+          "
+        />
+      </form>
+      <div class="promotion">
+        <div class="prtitle">Join Us!</div>
+        <div class="inner">What a great choice!</div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+    <p>don't know responsive design</p>
+  </body>
+</html>
