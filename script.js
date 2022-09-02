@@ -18,13 +18,24 @@ submit.addEventListener("click", (e) => {
   e.preventDefault(); //prevent refreshing
   //Validate username
   let uservalid = null;
+
   if (
     username.children[2].value.length <= 2 ||
-    username.children[2].value.length > 20
+    username.children[2].value.length > 20 ||
+    specialp(username.children[2].value) ||
+    !userformat(username.children[2].value)
   ) {
     uservalid = false;
     username.children[0].style.display = "none";
     username.children[1].style.display = "inline";
+    username.children[1].textContent =
+      " must be more than 2, less than 20 characters";
+    if (specialp(username.children[2].value)) {
+      username.children[1].textContent = "No special characters is allowed";
+    }
+    if (!userformat(username.children[2].value)) {
+      username.children[1].textContent = "Wrong Format";
+    }
     username.children[1].animate(
       [
         { transform: "translate(-10px,20px)" },
@@ -111,55 +122,6 @@ submit.addEventListener("click", (e) => {
     password.children[0].style.display = "none";
     password.children[1].style.display = "none";
   });
-  function specialp(password) {
-    for (var i in password) {
-      var fal = null;
-      if (
-        (password[i] >= "!" && password[i] <= "/") ||
-        (password[i] >= ":" && password[i] <= "@") ||
-        (password[i] >= "[" && password[i] <= "`") ||
-        (password[i] >= "{" && password[i] <= "~")
-      ) {
-        return true;
-      } else {
-        fal = false;
-      }
-    }
-    return fal;
-  }
-  function numericp(password) {
-    var fal = null;
-    for (var i in password) {
-      if (password[i] >= "0" && password[i] <= "9") {
-        return true;
-      } else {
-        fal = false;
-      }
-    }
-    return fal;
-  }
-  function Upperp(password) {
-    var fal = null;
-    for (var i in password) {
-      if (password[i] >= "A" && password[i] <= "Z") {
-        return true;
-      } else {
-        fal = false;
-      }
-    }
-    return fal;
-  }
-  function Lowerp(password) {
-    var fal = null;
-    for (var i in password) {
-      if (password[i] >= "a" && password[i] <= "z") {
-        return true;
-      } else {
-        fal = false;
-      }
-    }
-    return fal;
-  }
   //email validation
   let emailvalid = null;
   var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -225,7 +187,70 @@ submit.addEventListener("click", (e) => {
     console.log("Retype");
   }
 });
-
+function specialp(password) {
+  for (var i in password) {
+    var fal = null;
+    if (
+      (password[i] >= "!" && password[i] <= "/") ||
+      (password[i] >= ":" && password[i] <= "@") ||
+      (password[i] >= "[" && password[i] <= "`") ||
+      (password[i] >= "{" && password[i] <= "~")
+    ) {
+      return true;
+    } else {
+      fal = false;
+    }
+  }
+  return fal;
+}
+function numericp(password) {
+  var fal = null;
+  for (var i in password) {
+    if (password[i] >= "0" && password[i] <= "9") {
+      return true;
+    } else {
+      fal = false;
+    }
+  }
+  return fal;
+}
+function Upperp(password) {
+  var fal = null;
+  for (var i in password) {
+    if (password[i] >= "A" && password[i] <= "Z") {
+      return true;
+    } else {
+      fal = false;
+    }
+  }
+  return fal;
+}
+function Lowerp(password) {
+  var fal = null;
+  for (var i in password) {
+    if (password[i] >= "a" && password[i] <= "z") {
+      return true;
+    } else {
+      fal = false;
+    }
+  }
+  return fal;
+}
+function userformat(user) {
+  let s_count = 0;
+  for (var i = 0; i < user.length; i++) {
+    if (user[i] == " ") {
+      s_count++;
+    }
+  }
+  if (s_count != 1) {
+    return false;
+  }
+  if (user[0] == " " || user[user.length - 1] == " ") {
+    return false;
+  }
+  return true;
+}
 let html = document.getElementsByTagName("html")[0];
 window.addEventListener("resize", (e) => {
   if (parseFloat(window.getComputedStyle(html).width) <= 1000) {
