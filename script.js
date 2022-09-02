@@ -237,20 +237,18 @@ function Lowerp(password) {
   return fal;
 }
 function userformat(user) {
-  let s_count = 0;
   for (var i = 0; i < user.length; i++) {
-    if (user[i] == " ") {
-      s_count++;
+    if (user[i] === " " && user[i - 1] === " ") {
+      return false;
     }
   }
-  if (s_count != 1) {
+  if (user[0] === " " || user[user.length - 1] === " " || user === "") {
     return false;
   }
-  if (user[0] == " " || user[user.length - 1] == " ") {
-    return false;
-  }
+
   return true;
 }
+
 let html = document.getElementsByTagName("html")[0];
 window.addEventListener("resize", (e) => {
   if (parseFloat(window.getComputedStyle(html).width) <= 1000) {
